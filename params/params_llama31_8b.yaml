@@ -1,0 +1,28 @@
+##params_llama31_8b.yaml, GPU Count = 4 L40S 
+
+model_params:
+  PARAMS: 8_000_000_000
+  PREC_BITS: 16
+  LAYERS: 32
+  D_MODEL: 4096
+  TOK_LEN: 128000
+
+workload_params:
+  avg_input_tokens: 1024
+  avg_output_tokens: 1024
+  requests_per_sec: 25
+  CONCUR: 200
+  GPUS_PER_SERVER: 8
+  TPS_REQ:
+
+gpu_params:
+  GPU_TYPE:
+  VRAM_GPU:
+  BW_GPU:
+  MIG_SLICES:
+
+efficiency_factor:
+  value: 0.7
+
+inference_params:
+  prompt_phase_factor: 0.01

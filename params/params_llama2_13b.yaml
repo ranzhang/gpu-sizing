@@ -1,0 +1,23 @@
+##params_llama2_13b.yaml, GPU count = 1 (A100 40GB), 28 L40S, 9.0 sec TTFT
+model_params:
+  PARAMS: 13000000000
+  PREC_BITS: 16
+  LAYERS: 40
+  D_MODEL: 5120
+  TOK_LEN: 4096
+workload_params:
+  avg_input_tokens: 1024
+  avg_output_tokens: 512
+  requests_per_sec: 110
+  CONCUR: 1000
+  GPUS_PER_SERVER: 8
+  TPS_REQ:
+gpu_params:
+  GPU_TYPE: 
+  VRAM_GPU: 40
+  BW_GPU: 777
+  MIG_SLICES: 7
+efficiency_factor:
+  value: 0.7
+inference_params:
+  prompt_phase_factor: 0.01

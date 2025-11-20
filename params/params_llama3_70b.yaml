@@ -1,0 +1,24 @@
+#params_llama3_70b.yaml GPU count = 2 (A100/H100 80GB)
+
+model_params:
+  PARAMS: 70000000000
+  PREC_BITS: 16
+  LAYERS: 80
+  D_MODEL: 8192
+  TOK_LEN: 8000
+workload_params:
+  avg_input_tokens: 7000
+  avg_output_tokens: 1000
+  requests_per_sec: 10
+  CONCUR: 100
+  GPUS_PER_SERVER: 8
+  TPS_REQ:
+gpu_params:
+  GPU_TYPE: A100_80GB
+  VRAM_GPU:
+  BW_GPU:
+  MIG_SLICES:
+efficiency_factor:
+  value: 0.7
+inference_params:
+  prompt_phase_factor: 0.01

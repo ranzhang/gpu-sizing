@@ -1,0 +1,24 @@
+##params_llama2_7b, GPU count = 1 (A10/T4/RTX 3060), 11 L40S 
+model_params:
+  PARAMS: 7_000_000_000
+  PREC_BITS: 16
+  LAYERS: 32
+  D_MODEL: 4096
+  TOK_LEN: 4096
+workload_params:
+  avg_input_tokens: 1024
+  avg_output_tokens: 512
+  requests_per_sec: 86
+  CONCUR: 1000
+  GPUS_PER_SERVER: 8
+  TPS_REQ: 
+gpu_params:
+  GPU_TYPE: L40S
+  VRAM_GPU:
+  BW_GPU:
+  MIG_SLICES:
+efficiency_factor:
+  value: 0.7
+
+inference_params:
+  prompt_phase_factor: 0.01   ##default to 0.01, or prompt phase is at 1% of output phase token generation

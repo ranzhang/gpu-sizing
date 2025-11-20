@@ -1,0 +1,48 @@
+# ========================
+# Model architecture parameters
+# ========================
+model_params:
+  PARAMS: 70_000_000_000     # Number of trainable parameters in the model
+  PREC_BITS: 16              # Precision in bits (e.g., 16 for FP16/BF16)
+  LAYERS: 80                 # Number of transformer layers (excluding embedding/output layers)
+  D_MODEL: 8192              # Hidden dimension size
+  TOK_LEN: 4096               # Maximum sequence length supported
+
+# ========================
+# Workload / request parameters
+# ========================
+workload_params:
+  # --- Average request characteristics ---
+  avg_input_tokens: 2000     # Average prompt length (input tokens per request)
+  avg_output_tokens: 500     # Average generation length (output tokens per request)
+  requests_per_sec: 50       # Average number of active requests arriving per second
+
+  # --- Additional serving constraints ---
+  CONCUR: 16                 # Concurrent active sequences/users
+  GPUS_PER_SERVER: 8         # Number of GPUs per physical server
+
+  # --- Optional: Direct TPS override (if specified, skips auto-calc from avg token lengths) ---
+  TPS_REQ:                   # Leave blank to derive from avg tokens and requests_per_sec
+
+# ========================
+# GPU hardware parameters (Optional)
+# ========================
+# If GPU_TYPE is provided, script evaluates only that GPU.
+# If omitted or set to null, script auto-selects the cheapest viable GPU from GPU DB.
+gpu_params:
+  GPU_TYPE:                  # e.g., "B300" or leave blank for auto-select
+  VRAM_GPU:                  # Optional override of GPU VRAM capacity (GB)
+  BW_GPU:                    # Optional override of GPU memory bandwidth (GB/s)
+  MIG_SLICES:                 # Optional override of MIG slices count
+
+# ========================
+# Efficiency factor
+# ========================
+efficiency_factor:
+  value: 0.6                  # Multiplier to model real-world efficiency loss (0.0-1.0)
+
+# ========================
+# Inference parameters (optional)
+# ========================
+inference_params:
+  prompt_phase_factor: 0.01   # prompt phase at 1% of TPS share

@@ -1,0 +1,27 @@
+## params_mixtral_8x7b.yaml GPU count = 12 L40S
+
+model_params:
+  PARAMS: 46700000000
+  PREC_BITS: 16
+  LAYERS: 32
+  D_MODEL: 4096
+  TOK_LEN: 4096
+
+
+workload_params:
+  avg_input_tokens: 1024
+  avg_output_tokens: 512
+  requests_per_sec: 88
+  CONCUR: 1000
+  GPUS_PER_SERVER: 8
+  TPS_REQ:
+gpu_params:
+  GPU_TYPE: L40S
+  VRAM_GPU:
+  BW_GPU:
+  MIG_SLICES:
+efficiency_factor:
+  value: 0.7
+
+inference_params:
+  prompt_phase_factor: 0.01
